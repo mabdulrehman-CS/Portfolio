@@ -1,0 +1,11 @@
+{
+  "title": "M_Abdul_Rehman",
+  "description": "Showcase your computer science skills and projects with a modern, responsive portfolio featuring engaging animations and a unique navigation system.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
