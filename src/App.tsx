@@ -25,6 +25,8 @@ function MatrixRain() {
     const fontSize = 13
     let cols: number[] = []
     let animId: number
+    let lastTime = 0
+    const fpsInterval = 1000 / 30 // locked smooth 30 FPS matrix rain
 
     function resize() {
       if (!canvas) return
@@ -33,8 +35,14 @@ function MatrixRain() {
       cols = Array(Math.floor(canvas.width / fontSize)).fill(1)
     }
 
-    function draw() {
+    function draw(timestamp: number) {
       if (!canvas || !ctx) return
+      animId = requestAnimationFrame(draw)
+
+      const elapsed = timestamp - lastTime
+      if (elapsed < fpsInterval) return
+      lastTime = timestamp - (elapsed % fpsInterval)
+
       const isLight = document.body.classList.contains('light-mode')
       ctx.fillStyle = isLight ? 'rgba(248,250,252,0.08)' : 'rgba(5,5,5,0.055)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
@@ -55,11 +63,10 @@ function MatrixRain() {
         }
         cols[i]++
       }
-      animId = requestAnimationFrame(draw)
     }
 
     resize()
-    draw()
+    animId = requestAnimationFrame(draw)
     window.addEventListener('resize', resize)
     return () => {
       cancelAnimationFrame(animId)
@@ -87,6 +94,8 @@ function NeuralNet() {
     if (!ctx) return
 
     let animId: number
+    let lastTime = 0
+    const fpsInterval = 1000 / 60 // locked smooth 60 FPS
     type Node = { x: number; y: number; vx: number; vy: number; r: number; pulse: number }
     let nodes: Node[] = []
 
@@ -106,8 +115,14 @@ function NeuralNet() {
       }))
     }
 
-    function draw() {
+    function draw(timestamp: number) {
       if (!canvas || !ctx) return
+      animId = requestAnimationFrame(draw)
+
+      const elapsed = timestamp - lastTime
+      if (elapsed < fpsInterval) return
+      lastTime = timestamp - (elapsed % fpsInterval)
+
       const isLight = document.body.classList.contains('light-mode')
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -126,7 +141,7 @@ function NeuralNet() {
           const dx = nodes[i].x - nodes[j].x
           const dy = nodes[i].y - nodes[j].y
           const distSq = dx * dx + dy * dy
-          if (distSq < 16000) { // 126px threshold
+          if (distSq < 16000) {
             const dist = Math.sqrt(distSq)
             const alpha = (1 - dist / 126) * 0.22
             ctx.beginPath()
@@ -148,12 +163,10 @@ function NeuralNet() {
         ctx.fillStyle = isLight ? `rgba(184,123,0,${0.35 + glow * 0.35})` : `rgba(232,185,10,${0.6 + glow * 0.4})`
         ctx.fill()
       }
-
-      animId = requestAnimationFrame(draw)
     }
 
     resize()
-    draw()
+    animId = requestAnimationFrame(draw)
     window.addEventListener('resize', resize)
     return () => {
       cancelAnimationFrame(animId)
