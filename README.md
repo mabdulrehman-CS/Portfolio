@@ -1,6 +1,11 @@
 # 🚀 Muhammad Abdul Rehman — AI & ML Developer Portfolio
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://m-abdul-rehman-portfolio-one.vercel.app)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Portfolio-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mabdulrehman-CS/Portfolio)
+
 A modern, high-performance, interactive portfolio website showcasing projects in **RAG Systems**, **Local LLMs**, **Computer Vision**, **Data Science**, and **Intelligent Automation**.
+
+🌐 **Live Website:** [https://m-abdul-rehman-portfolio-one.vercel.app](https://m-abdul-rehman-portfolio-one.vercel.app)
 
 Built with **React 19**, **Vite 8**, **TailwindCSS 4**, and **TypeScript**.
 
@@ -22,8 +27,8 @@ Built with **React 19**, **Vite 8**, **TailwindCSS 4**, and **TypeScript**.
 
 - **Frontend Core**: React 19, TypeScript
 - **Bundler & Tooling**: Vite 8, TailwindCSS 4, `@tailwindcss/vite`
+- **Deployment**: Vercel
 - **Typography**: Google Fonts (*Orbitron, Outfit, JetBrains Mono*)
-- **Formatting**: `oxfmt`
 
 ---
 
@@ -37,8 +42,8 @@ Ensure you have **Node.js** (v18 or higher) installed on your system.
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/mabdulrehman-CS/Portfolio-Website.git
-   cd Portfolio-Website
+   git clone https://github.com/mabdulrehman-CS/Portfolio.git
+   cd Portfolio
    ```
 
 2. **Install dependencies**:
@@ -61,14 +66,13 @@ Ensure you have **Node.js** (v18 or higher) installed on your system.
 | `npm run dev` | Launches the local development server with HMR on `http://localhost:5173` |
 | `npm run build` | Compiles the production bundle into the `dist/` directory |
 | `npm run preview` | Previews the compiled production build locally |
-| `npm run format` | Formats source files using `oxfmt` |
 
 ---
 
 ## 📂 Project Structure
 
 ```text
-Portfolio Website/
+Portfolio/
 ├── src/
 │   ├── imports/           # Image assets, certificates, and CV PDF
 │   ├── App.tsx            # Main application component & section definitions
@@ -85,7 +89,8 @@ Portfolio Website/
 
 ## ✉️ Contact & Connect
 
-- **Email**: [mabdulrehman.cui@gmail.com](mailto:mabdulrehman.cui@gmail.com)
+- **Live Site**: [m-abdul-rehman-portfolio-one.vercel.app](https://m-abdul-rehman-portfolio-one.vercel.app)
+- **Email**: [abdulrehmanmuhammad524@gmail.com](mailto:abdulrehmanmuhammad524@gmail.com)
 - **GitHub**: [github.com/mabdulrehman-CS](https://github.com/mabdulrehman-CS)
 - **LinkedIn**: [linkedin.com/in/muhammad-abdul-rehman-cs](https://linkedin.com/in/muhammad-abdul-rehman-cs)
 
