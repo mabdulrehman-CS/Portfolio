@@ -27,6 +27,7 @@ function MatrixRain() {
     let animId: number
     let lastTime = 0
     const fpsInterval = 1000 / 30 // locked smooth 30 FPS matrix rain
+    let isVisible = false
 
     function resize() {
       if (!canvas) return
@@ -38,6 +39,8 @@ function MatrixRain() {
     function draw(timestamp: number) {
       if (!canvas || !ctx) return
       animId = requestAnimationFrame(draw)
+
+      if (!isVisible) return
 
       const elapsed = timestamp - lastTime
       if (elapsed < fpsInterval) return
@@ -65,10 +68,19 @@ function MatrixRain() {
       }
     }
 
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting
+      },
+      { threshold: 0.01 }
+    )
+    observer.observe(canvas)
+
     resize()
     animId = requestAnimationFrame(draw)
     window.addEventListener('resize', resize)
     return () => {
+      observer.disconnect()
       cancelAnimationFrame(animId)
       window.removeEventListener('resize', resize)
     }
@@ -98,13 +110,14 @@ function NeuralNet() {
     const fpsInterval = 1000 / 60 // locked smooth 60 FPS
     type Node = { x: number; y: number; vx: number; vy: number; r: number; pulse: number }
     let nodes: Node[] = []
+    let isVisible = false
 
     function resize() {
       if (!canvas) return
       canvas.width = canvas.offsetWidth
       canvas.height = canvas.offsetHeight
       const count = Math.floor((canvas.width * canvas.height) / 22000)
-      const maxNodes = Math.min(Math.max(count, 12), 28)
+      const maxNodes = Math.min(Math.max(count, 12), 24)
       nodes = Array.from({ length: maxNodes }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -118,6 +131,8 @@ function NeuralNet() {
     function draw(timestamp: number) {
       if (!canvas || !ctx) return
       animId = requestAnimationFrame(draw)
+
+      if (!isVisible) return
 
       const elapsed = timestamp - lastTime
       if (elapsed < fpsInterval) return
@@ -165,10 +180,19 @@ function NeuralNet() {
       }
     }
 
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting
+      },
+      { threshold: 0.01 }
+    )
+    observer.observe(canvas)
+
     resize()
     animId = requestAnimationFrame(draw)
     window.addEventListener('resize', resize)
     return () => {
+      observer.disconnect()
       cancelAnimationFrame(animId)
       window.removeEventListener('resize', resize)
     }
