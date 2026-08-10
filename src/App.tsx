@@ -958,13 +958,25 @@ function Header({ theme, onToggleTheme }: { theme: 'dark' | 'light'; onToggleThe
           </div>
 
           {/* Full Screen View Body */}
-          <div className="flex-1 overflow-y-auto p-3 sm:p-8 flex justify-center items-start">
-            <div className="relative max-w-4xl w-full bg-white rounded-sm shadow-2xl overflow-hidden border border-amber-500/30">
-              <img
-                src={cvImg}
-                alt="Muhammad Abdul Rehman CV"
-                className="w-full h-auto object-contain block"
-              />
+          <div className="flex-1 overflow-hidden p-2 sm:p-6 flex justify-center items-center">
+            <div className="relative max-w-5xl w-full h-[85vh] bg-neutral-900 rounded-sm shadow-2xl overflow-hidden border" style={{ borderColor: 'rgba(232, 185, 10, 0.4)' }}>
+              <object
+                data={cvPdf}
+                type="application/pdf"
+                className="w-full h-full block"
+              >
+                <iframe
+                  src={cvPdf}
+                  title="Muhammad Abdul Rehman CV"
+                  className="w-full h-full border-0 block"
+                >
+                  <img
+                    src={cvImg}
+                    alt="Muhammad Abdul Rehman CV"
+                    className="w-full h-auto object-contain block"
+                  />
+                </iframe>
+              </object>
             </div>
           </div>
         </div>,
